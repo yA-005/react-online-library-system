@@ -18,6 +18,7 @@ function App() {
         <Route path="/book/:id" element={<BookDetails />} />
         <Route path="/add" element={<AddBook />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/browse/:category?" element={<BrowseBooks />} />
       </Routes>
     </BrowserRouter>
   );
