@@ -11,16 +11,15 @@ import NotFound from "./components/NotFound";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/browse" element={<BrowseBooks />} />
-        <Route path="/book/:id" element={<BookDetails />} />
-        <Route path="/add" element={<AddBook />} />
+        <Route path="/" element={<><Navbar /><Home /></>} />
+        <Route path="/browse/:category?" element={<><Navbar /><BrowseBooks /></>} />
+        <Route path="/book/:id" element={<><Navbar /><BookDetails /></>} />
+        <Route path="/add" element={<><Navbar /><AddBook /></>} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/browse/:category?" element={<BrowseBooks />} />
       </Routes>
     </BrowserRouter>
   );
 }
+
 export default App;
