@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { popularBooks } from "../data/dummyBooks";
 
 const initialState = {
-  books: popularBooks,
+  books: [...popularBooks], // copy to allow mutations
 };
 
 const booksSlice = createSlice({

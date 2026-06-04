@@ -5,12 +5,16 @@ import { categories, popularBooks } from "../data/dummyBooks";
 
 function Home() {
   return (
-    <div>
+    <div className="container">
       <h1>Welcome to Online Library</h1>
+
       <h2>Categories</h2>
-      <ul>
-        {categories.map(cat => <li key={cat}><Link to={`/browse/${cat}`}>{cat}</Link></li>)}
+      <ul className="categories-list">
+        {categories.map(cat => (
+          <li key={cat}><Link to={`/browse/${cat}`}>{cat}</Link></li>
+        ))}
       </ul>
+
       <h2>Popular Books</h2>
       <div className="book-grid">
         {popularBooks.map(book => (
@@ -24,4 +28,5 @@ function Home() {
     </div>
   );
 }
+
 export default Home;

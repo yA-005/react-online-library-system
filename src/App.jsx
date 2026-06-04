@@ -1,12 +1,12 @@
 
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import BrowseBooks from "./components/BrowseBooks";
-import BookDetails from "./components/BookDetails";
-import AddBook from "./components/AddBook";
-import NotFound from "./components/NotFound";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import BrowseBooks from './components/BrowseBooks';
+import BookDetails from './components/BookDetails';
+import AddBook from './components/AddBook';
+import NotFound from './components/NotFound';
 
 function App() {
   return (

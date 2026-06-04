@@ -2,12 +2,14 @@
 
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
-import { popularBooks } from "../data/dummyBooks";
+import { useSelector } from "react-redux";
 
 function BrowseBooks() {
   const { category } = useParams();
   const [searchTerm, setSearchTerm] = useState("");
-  let filteredBooks = popularBooks;
+  const allBooks = useSelector(state => state.books.books);
+
+  let filteredBooks = allBooks;
   if (category) {
     filteredBooks = filteredBooks.filter(book => book.category === category);
   }
@@ -17,25 +19,33 @@ function BrowseBooks() {
       book.author.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
+
   return (
-    <div>
+    <div className="container">
       <h1>Browse Books</h1>
-      <input
-        type="text"
-        placeholder="Search by title or author"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search by title or author..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
       <div className="book-grid">
-        {filteredBooks.map(book => (
-          <div key={book.id} className="book-card">
-            <h3>{book.title}</h3>
-            <p>{book.author}</p>
-            <Link to={`/book/${book.id}`}>View Details</Link>
-          </div>
-        ))}
+        {filteredBooks.length > 0 ? (
+          filteredBooks.map(book => (
+            <div key={book.id} className="book-card">
+              <h3>{book.title}</h3>
+              <p>{book.author}</p>
+              <Link to={`/book/${book.id}`}>View Details</Link>
+            </div>
+          ))
+        ) : (
+          <p>No books found.</p>
+        )}
       </div>
     </div>
   );
 }
+
 export default BrowseBooks;
